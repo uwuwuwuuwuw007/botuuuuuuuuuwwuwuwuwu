@@ -1,3 +1,4 @@
+const axios = require("axios");
 const fs = require("fs");
 
 module.exports = {
@@ -18,15 +19,26 @@ module.exports = {
     if (event.body && event.body.toLowerCase().includes("owner")) {
       try {
         // Set reaction to the message
-        api.setMessageReaction("ðŸ’‹", event.messageID, () => {}, true);
+        api.setMessageReaction("💋", event.messageID, () => {}, true);
 
+        // Define the Imgur video link
+        const videoUrl = "https://i.imgur.com/TCuQx0p.mp4";
+
+        // Download the video from the Imgur link
+        const response = await axios({
+          url: videoUrl,
+          method: "GET",
+          responseType: "stream",
+        });
+
+        // Send the reply with the video
         return message.reply({
-          body: "Hi, I am PrÅxima. Developed by Miss AÃ yusha Shrestha and my Second developer is Luzzixy.🌿🤍",
-          attachment: fs.createReadStream("owner.mp4")
+          body: "Hi, I am Prōxima. Developed by Miss Aāyusha Shrestha and my Second developer is Luzzixy.🤍🌌",
+          attachment: response.data,
         });
       } catch (error) {
         console.error("Error setting reaction or sending reply:", error);
       }
     }
-  }
-}
+  },
+};
