@@ -60,11 +60,11 @@ module.exports = {
       const ment = [{ id: id, tag: name }];
       const prompt = args.join(" ");
       const encodedPrompt = encodeURIComponent(prompt);
-      api.setMessageReaction("🕕", event.messageID, () => { }, true);
+      api.setMessageReaction("✅", event.messageID, () => { }, true);
       const res = await axios.get(`https://sandipbaruwal.onrender.com/gemini?prompt=${encodedPrompt}`);
       const result = res.data.answer;
 
-      api.setMessageReaction("✅", event.messageID, () => { }, true);
+      api.setMessageReaction("🕕", event.messageID, () => { }, true);
       message.reply({
         body: `${name}, ${result}`,
         mentions: ment,
