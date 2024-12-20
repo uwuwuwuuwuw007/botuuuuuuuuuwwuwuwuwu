@@ -19,7 +19,7 @@ module.exports = {
     }
   },
   onStart: async function ({ message, event, args, api }) {
-    api.setMessageReaction("ðŸ•", event.messageID, (err) => {}, true);
+    api.setMessageReaction("🕕", event.messageID, (err) => {}, true);
     try {
       let imageUrl = null;
       let prompt = '';
@@ -27,7 +27,7 @@ module.exports = {
       if (event.type === "message_reply") {
         const attachment = event.messageReply.attachments[0];
         if (!attachment || !["photo", "sticker"].includes(attachment.type)) {
-          return message.reply("ayo reply to an image");
+          return message.reply("Reply to an image");
         }
         imageUrl = attachment.url;
       } else if (args.length > 0 && args[0].startsWith("http")) {
@@ -90,7 +90,7 @@ module.exports = {
 
     } catch (error) {
       console.error("Error:", error.message);
-      message.reply("âŒ | An error occurred. Please try again later.");
+      message.reply("| An error occurred. Please try again later.");
     }
   }
 };
