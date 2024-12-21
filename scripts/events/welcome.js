@@ -9,8 +9,8 @@ if (!global.temp.welcomeEvent)
 module.exports = {
 	config: {
 		name: "welcome",
-		version: "1.7",
-		author: "NTKhang",
+		version: "1.0",
+		author: "Aayusha",
 		category: "events"
 	},
 
@@ -20,7 +20,7 @@ module.exports = {
 			session2: "Noon",
 			session3: "Afternoon",
 			session4: "Evening",
-			welcomeMessage: "[#] Thank You For Inviting Me!!\n[#] Bot Prefix Is: %1\n[#] I'm Handled By Miss Aayusha!!",
+			welcomeMessage: "Hi, I Am Proxiima.A Friendly ChatBot By Aayussha Shrestha and Luzzixy Supports Me As A Second Developer🤍",
 			multiple1: "you",
 			multiple2: "you guys",
 			defaultWelcomeMessage: `•>>Namaste, {userName}!🤍🌿.\n•>>Welcome to ChatBox🚠\n•>>Have A Nice {session}🤍☄️`
