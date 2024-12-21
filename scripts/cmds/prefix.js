@@ -77,8 +77,8 @@ module.exports = {
 			const musicPrefix = await threadsData.get(event.threadID, "data.musicPrefix") || "$";
 			const songLink = await threadsData.get(event.threadID, "data.songLink") || "Not set";
 			
-			const prefixInfo = `» MY PREFIX IS ${prefix}
-» PROXIMA V¹`;
+			const prefixInfo = `» MY PREFIX IS [${prefix}]
+» PROXIMA [V¹]`;
 			return message.reply({
 				body: prefixInfo,
 				attachment: await utils.getStreamFromURL(imageUrl)
