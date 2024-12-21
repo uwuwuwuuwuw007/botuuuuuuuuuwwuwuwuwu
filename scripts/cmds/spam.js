@@ -4,7 +4,7 @@ module.exports = {
     version: "1.0",
     author: "YourName",
     countDown: 5,
-    role: 0,
+    role: 2,
     shortDescription: "Spam a message",
     longDescription: "Send the provided message multiple times with a customizable amount.",
     category: "Utility",
@@ -49,7 +49,7 @@ module.exports = {
           if (spamCount >= amount) {
             clearInterval(spamInterval); // Stop the loop after the specified amount
             console.log(`Finished spamming ${amount} messages.`);
-            api.sendMessage(`Done! Spammed ${amount} messages.`, threadID);
+            api.sendMessage(`Done! Miss Aayuse Spammed ${amount} Messages💬✅.`, threadID);
             return;
           }
 
