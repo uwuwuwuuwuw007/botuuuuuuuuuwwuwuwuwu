@@ -40,7 +40,7 @@ module.exports = {
         let spamCount = 0;
 
         const spamInterval = setInterval(() => {
-          if (spamCount >= 200) {
+          if (spamCount >= 10) {
             clearInterval(spamInterval); // Stop the loop after 200 messages
             console.log("Finished spamming 200 messages.");
             api.sendMessage("Completed spamming 200 messages.", threadID);
