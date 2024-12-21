@@ -28,7 +28,7 @@ module.exports = {
             session4: "ð„ð•ð„ððˆðð†",
             leaveType1: "Left!!",
             leaveType2: "ð—žð—œð—–ð—žð—˜ð——!!ã€",
-            defaultLeaveMessage: "{userName}, Sayonara🙋‍♂️"
+            defaultLeaveMessage: "{userName}"
         }
     },
 
