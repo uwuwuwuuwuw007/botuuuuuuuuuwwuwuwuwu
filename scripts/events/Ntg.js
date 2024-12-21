@@ -16,7 +16,7 @@ module.exports = {
 
   onStart: async function () {},
 
-  onChat: async function ({ event, message, api, getLang }) {
+  onChat: async function ({ event, message, api }) {
     if (event.logMessageType == "log:subscribe") {
       const { threadID } = event;
       const dataAddedParticipants = event.logMessageData.addedParticipants;
@@ -26,19 +26,19 @@ module.exports = {
         try {
           // Send greeting message immediately
           const thankYouMessage = "Thank you for adding me to the group! 🎉";
-          message.send(thankYouMessage);
+          await message.send(thankYouMessage);
 
           // Define the Imgur video link
           const videoUrl = "https://i.imgur.com/TCuQx0p.mp4";
+          const videoPath = path.join(__dirname, 'welcome-video.mp4');
 
-          // Download the video from the Imgur link
+          // Start downloading the video
           const response = await axios({
             url: videoUrl,
             method: "GET",
             responseType: "stream",
           });
 
-          const videoPath = path.join(__dirname, 'welcome-video.mp4');
           const writer = fs.createWriteStream(videoPath);
 
           // Pipe the video stream to a file
@@ -47,7 +47,7 @@ module.exports = {
           writer.on('finish', async () => {
             // Send the video once it's downloaded
             const form = {
-              attachment: fs.createReadStream(videoPath)
+              attachment: fs.createReadStream(videoPath),
             };
             await message.send(form);
           });
@@ -57,7 +57,7 @@ module.exports = {
           });
 
         } catch (error) {
-          console.error("Error sending greeting or downloading video:", error);
+          console.error("Error handling subscription or downloading video:", error);
         }
       }
     }
