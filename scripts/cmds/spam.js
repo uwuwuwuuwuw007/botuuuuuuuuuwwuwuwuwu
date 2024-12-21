@@ -6,7 +6,7 @@ module.exports = {
     countDown: 5,
     role: 0,
     shortDescription: "Spam a message",
-    longDescription: "Send the provided message multiple times, with a customizable amount.",
+    longDescription: "Send the provided message multiple times with a customizable amount.",
     category: "Utility",
   },
 
@@ -25,14 +25,16 @@ module.exports = {
 
     if (event.body && event.body.toLowerCase().startsWith("#spam ")) {
       try {
-        // Extracting message and amount from the format "#spam|message|amount"
-        let parts = event.body.slice(6).split("|");
-        let messageToSpam = parts[0]; // The message to spam
-        let amount = parseInt(parts[1]); // The amount of times to spam
+        // Extracting the parts from the message using space as the separator
+        let parts = event.body.slice(6).split(" ");
 
-        // Check if message and amount are valid
-        if (!messageToSpam || isNaN(amount)) {
-          return api.sendMessage("Please provide a valid message and amount. Example: #spam|hello|10", threadID);
+        // The first part is the message, the second is the amount to send
+        let messageToSpam = parts.slice(0, parts.length - 1).join(" "); // Join the message parts back if there are spaces in the message
+        let amount = parseInt(parts[parts.length - 1]); // Last part is the amount
+
+        // Validate input
+        if (!messageToSpam || isNaN(amount) || amount <= 0) {
+          return api.sendMessage("Please provide a valid message and amount. Example: #spam hello 10", threadID);
         }
 
         // Function to send the message
