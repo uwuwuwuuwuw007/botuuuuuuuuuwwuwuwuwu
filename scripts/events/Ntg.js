@@ -22,38 +22,32 @@ module.exports = {
 
                 // If the bot is added to the group
                 if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
-                    // Define the path where the video will be saved
+                    // Fetch the video from the Imgur URL
                     const videoUrl = 'https://i.imgur.com/JyyfDrC.mp4';  // Example video URL from Imgur
                     const videoPath = path.join(__dirname, 'welcome-video.mp4');
 
                     try {
-                        // First, download the video and save it
-                        const response = await axios({
-                            url: videoUrl,
-                            method: 'GET',
-                            responseType: 'stream'
-                        });
-
-                        // Create a write stream to save the video
+                        // Start downloading the video
+                        const response = await axios.get(videoUrl, { responseType: 'stream' });
                         const writer = fs.createWriteStream(videoPath);
-                        response.data.pipe(writer);
+                        
+                        // Wait until the video download is finished
+                        writer.on('finish', async () => {
+                            // Once the video is downloaded, send the greeting text
+                            const welcomeMessage = getLang("welcomeMessage");
+                            await message.send(welcomeMessage);
 
-                        // Wait for the video download to complete
-                        writer.on('finish', () => {
-                            // Send the video first
+                            // Now send the video
                             const form = {
                                 attachment: fs.createReadStream(videoPath)
                             };
-                            message.send(form);
-
-                            // Now send the greeting message (this will be the last part)
-                            const welcomeMessage = "Hi, I Am Proxiima. A Friendly ChatBot By Aayussha Shrestha and Luzzixy Supports Me As A Second Developer🤍";
-                            message.send(welcomeMessage);
+                            await message.send(form);  // Send video once it's ready
                         });
 
                         writer.on('error', (error) => {
                             console.error("Error saving video: ", error);
                         });
+
                     } catch (error) {
                         console.error("Error downloading video: ", error);
                     }
