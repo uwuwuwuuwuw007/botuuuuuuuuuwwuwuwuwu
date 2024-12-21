@@ -80,7 +80,7 @@ module.exports = {
       } else {
         api.sendMessage("", event.threadID, event.messageID);
       }
-      api.setMessageReaction("🛠️", event.messageID, (err) => {}, true);
+      api.setMessageReaction("🌿", event.messageID, (err) => {}, true);
     }
   },
   downLoad: function (url, api, event) {
@@ -115,7 +115,7 @@ module.exports = {
       }
 
       const shortUrl = await shortenURL(res);
-      const messageBody = `💜|Here is Your Video`;
+      const messageBody = `🌿|Here is Your Video`;
       api.sendMessage({
         body: messageBody,
         attachment: fs.createReadStream(path)
@@ -140,7 +140,7 @@ module.exports = {
         response.data.pipe(fs.createWriteStream(path));
         response.data.on('end', async () => {
           const shortUrl = await shortenURL(videoUrl);
-          const messageBody = `💜|Here is your video`;
+          const messageBody = `🌿|Here is your video`;
 
           api.sendMessage({
             body: messageBody,
@@ -170,7 +170,7 @@ module.exports = {
         response.data.pipe(fs.createWriteStream(path));
         response.data.on('end', async () => {
           const shortUrl = await shortenURL(videoUrl);
-          const messageBody = `💜|Here is your video`;
+          const messageBody = `🌿|Here is your video`;
 
           api.sendMessage({
             body: messageBody,
@@ -202,7 +202,7 @@ module.exports = {
       response.data.pipe(fs.createWriteStream(path));
       response.data.on('end', async () => {
         const shortUrl = await shortenURL(videoUrl);
-        const messageBody = `💜|Here is your video`;
+        const messageBody = `🌿|Here is your video`;
 
         api.sendMessage({
           body: messageBody,
@@ -231,7 +231,7 @@ module.exports = {
       response.data.pipe(fs.createWriteStream(path));
       response.data.on('end', async () => {
         const shortUrl = await shortenURL(videoUrl);
-        const messageBody = `💜|Here is your video`;
+        const messageBody = `🌿|Here is your video`;
 
         api.sendMessage({
           body: messageBody,
@@ -260,7 +260,7 @@ module.exports = {
       response.data.pipe(fs.createWriteStream(path));
       response.data.on('end', async () => {
         const shortUrl = await shortenURL(videoUrl);
-        const messageBody = `💜|Here is your video`;
+        const messageBody = `🌿|Here is your video`;
 
         api.sendMessage({
           body: messageBody,
