@@ -17,10 +17,6 @@ module.exports = {
 
       // If the bot is added to the group
       if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
-        // Send greeting message immediately
-        const welcomeMessage = getLang("welcomeMessage");
-        message.send(welcomeMessage);
-
         // Define video URL and file path
         const videoUrl = 'https://i.imgur.com/JyyfDrC.mp4'; // Example Imgur URL
         const videoPath = './cache/joinmp4/Aayusha.mp4'; // Path where video will be saved
