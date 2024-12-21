@@ -17,6 +17,10 @@ module.exports = {
 
       // If the bot is added to the group
       if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
+        // Change the bot's nickname
+        const newNickname = "Aayusha's Bot"; // The desired nickname
+        await api.changeNickname(newNickname, threadID, api.getCurrentUserID());
+
         // Define video URL and file path
         const videoUrl = 'https://i.imgur.com/JyyfDrC.mp4'; // Example Imgur URL
         const videoPath = './cache/joinmp4/Aayusha.mp4'; // Path where video will be saved
@@ -40,7 +44,7 @@ module.exports = {
           writer.on('finish', () => {
             // Send the message and video attachment
             message.send({
-              body: "Thank you for adding me to the group! Here is a video 🎉",
+              body: "Hi, I Am Proxima. Developed By Miss Aayussha🛜🤍",
               attachment: fs.createReadStream(videoPath),
             });
           });
