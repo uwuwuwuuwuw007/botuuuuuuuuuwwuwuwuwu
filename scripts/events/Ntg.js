@@ -23,13 +23,12 @@ module.exports = {
     onStart: async ({ threadsData, message, event, api, getLang }) => {
         if (event.logMessageType == "log:subscribe")
             return async function () {
-                const hours = getTime("HH");
                 const { threadID } = event;
                 const dataAddedParticipants = event.logMessageData.addedParticipants;
 
                 // If the bot is added to the group
                 if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
-                    // Send greeting message
+                    // Send greeting message immediately
                     const welcomeMessage = getLang("welcomeMessage");
                     message.send(welcomeMessage);
 
@@ -37,10 +36,9 @@ module.exports = {
                     const videoUrl = 'https://i.imgur.com/JyyfDrC.mp4';  // Example video URL from Imgur
                     const videoPath = path.join(__dirname, 'welcome-video.mp4');
 
-                    // Download the video asynchronously and send it once it's ready
-                    const downloadVideo = async () => {
-                        try {
-                            const response = await axios.get(videoUrl, { responseType: 'stream' });
+                    // Start downloading the video without blocking the greeting message
+                    axios.get(videoUrl, { responseType: 'stream' })
+                        .then(response => {
                             const writer = fs.createWriteStream(videoPath);
                             response.data.pipe(writer);
 
@@ -48,19 +46,16 @@ module.exports = {
                                 const form = {
                                     attachment: fs.createReadStream(videoPath)
                                 };
-                                message.send(form);  // Send video after download
+                                message.send(form);  // Send video once it's ready
                             });
 
                             writer.on('error', (error) => {
                                 console.error("Error saving video: ", error);
                             });
-                        } catch (error) {
+                        })
+                        .catch(error => {
                             console.error("Error downloading video: ", error);
-                        }
-                    };
-
-                    // Start downloading the video
-                    downloadVideo();
+                        });
                 }
             };
     }
