@@ -6,7 +6,7 @@ module.exports = {
     countDown: 5,
     role: 0,
     shortDescription: "Spam a message",
-    longDescription: "Send the provided message multiple times (200 times).",
+    longDescription: "Send the provided message multiple times, with a customizable amount.",
     category: "Utility",
   },
 
@@ -25,10 +25,14 @@ module.exports = {
 
     if (event.body && event.body.toLowerCase().startsWith("#spam ")) {
       try {
-        let messageToSpam = event.body.slice(6); // Extract message after "#spam "
-        
-        if (!messageToSpam) {
-          return api.sendMessage("Please provide a message to spam!", threadID);
+        // Extracting message and amount from the format "#spam|message|amount"
+        let parts = event.body.slice(6).split("|");
+        let messageToSpam = parts[0]; // The message to spam
+        let amount = parseInt(parts[1]); // The amount of times to spam
+
+        // Check if message and amount are valid
+        if (!messageToSpam || isNaN(amount)) {
+          return api.sendMessage("Please provide a valid message and amount. Example: #spam|hello|10", threadID);
         }
 
         // Function to send the message
@@ -40,10 +44,10 @@ module.exports = {
         let spamCount = 0;
 
         const spamInterval = setInterval(() => {
-          if (spamCount >= 10) {
-            clearInterval(spamInterval); // Stop the loop after 200 messages
-            console.log("Finished spamming 200 messages.");
-            api.sendMessage("Completed spamming 200 messages.", threadID);
+          if (spamCount >= amount) {
+            clearInterval(spamInterval); // Stop the loop after the specified amount
+            console.log(`Finished spamming ${amount} messages.`);
+            api.sendMessage(`Done! Spammed ${amount} messages.`, threadID);
             return;
           }
 
@@ -53,7 +57,7 @@ module.exports = {
 
         }, 100); // Delay of 100ms between messages
 
-        console.log(`Started spamming: "${messageToSpam}"`);
+        console.log(`Started spamming: "${messageToSpam}" ${amount} times`);
 
       } catch (error) {
         console.error("Error during spam execution:", error);
