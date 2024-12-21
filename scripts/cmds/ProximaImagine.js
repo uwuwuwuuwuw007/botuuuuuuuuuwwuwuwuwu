@@ -5,7 +5,7 @@ const tinyurl = require('tinyurl');
 
 module.exports = {
   config: {
-    name: "ProximaImagine",
+    name: "Proxiimagine",
     aliases: [],
     version: "1.0",
     author: "Kshitiz",
