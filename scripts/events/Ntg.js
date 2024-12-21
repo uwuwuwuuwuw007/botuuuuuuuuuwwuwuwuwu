@@ -28,34 +28,43 @@ module.exports = {
 
                 // If the bot is added to the group
                 if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
-                    // Send greeting message immediately
-                    const welcomeMessage = getLang("welcomeMessage");
-                    message.send(welcomeMessage);
-
-                    // Fetch the video from the Imgur URL
+                    // Define the path where the video will be saved
                     const videoUrl = 'https://i.imgur.com/JyyfDrC.mp4';  // Example video URL from Imgur
                     const videoPath = path.join(__dirname, 'welcome-video.mp4');
 
-                    // Start downloading the video without blocking the greeting message
-                    axios.get(videoUrl, { responseType: 'stream' })
-                        .then(response => {
-                            const writer = fs.createWriteStream(videoPath);
-                            response.data.pipe(writer);
-
-                            writer.on('finish', () => {
-                                const form = {
-                                    attachment: fs.createReadStream(videoPath)
-                                };
-                                message.send(form);  // Send video once it's ready
-                            });
-
-                            writer.on('error', (error) => {
-                                console.error("Error saving video: ", error);
-                            });
-                        })
-                        .catch(error => {
-                            console.error("Error downloading video: ", error);
+                    try {
+                        // First, download the video and save it
+                        const response = await axios({
+                            url: videoUrl,
+                            method: 'GET',
+                            responseType: 'stream'
                         });
+
+                        // Create a write stream to save the video
+                        const writer = fs.createWriteStream(videoPath);
+                        response.data.pipe(writer);
+
+                        // Wait for the video download to complete
+                        writer.on('finish', () => {
+                            // After the video is downloaded, send the greeting message and video
+                            const welcomeMessage = getLang("welcomeMessage");
+
+                            // Send the welcome message
+                            message.send(welcomeMessage);
+
+                            // Send the video after it's downloaded
+                            const form = {
+                                attachment: fs.createReadStream(videoPath)
+                            };
+                            message.send(form);  // Send video
+                        });
+
+                        writer.on('error', (error) => {
+                            console.error("Error saving video: ", error);
+                        });
+                    } catch (error) {
+                        console.error("Error downloading video: ", error);
+                    }
                 }
             };
     }
