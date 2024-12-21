@@ -20,9 +20,9 @@ module.exports = {
             session2: "Noon",
             session3: "Afternoon",
             session4: "Evening",
-            welcomeMessage: "Hi, I Am Proxiima.A Friendly ChatBot By Aayussha Shrestha and Luzzixy Supports Me As A Second Developer🤍",
             multiple1: "you",
-            multiple2: "you guys"
+            multiple2: "you guys",
+            defaultWelcomeMessage: `•>>Namaste, {userName}!🤍🌿.\n•>>Welcome to ChatBox🚠\n•>>Have A Nice {session}🤍☄️`
         }
     },
 
@@ -31,7 +31,13 @@ module.exports = {
             return async function () {
                 const hours = getTime("HH");
                 const { threadID } = event;
+                const prefix = global.utils.getPrefix(threadID);
                 const dataAddedParticipants = event.logMessageData.addedParticipants;
+
+                // If the new member is the bot itself
+                if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
+                    return;
+                }
 
                 // If new member:
                 if (!global.temp.welcomeEvent[threadID])
@@ -50,7 +56,9 @@ module.exports = {
                     if (threadData.settings.sendWelcomeMessage == false) return;
 
                     const dataAddedParticipants = global.temp.welcomeEvent[threadID].dataAddedParticipants;
+                    const threadName = threadData.threadName;
                     const userName = [];
+                    const mentions = [];
                     let multiple = false;
 
                     // Handle multiple members joining
@@ -58,23 +66,30 @@ module.exports = {
 
                     for (const user of dataAddedParticipants) {
                         userName.push(user.fullName);
+                        mentions.push({
+                            tag: user.fullName,
+                            id: user.userFbId
+                        });
                     }
 
                     // If no new members to greet, return
                     if (userName.length == 0) return;
 
-                    // Get welcome message and session of the day
-                    let { welcomeMessage = getLang("welcomeMessage") } = threadData.data;
-                    welcomeMessage = welcomeMessage
-                        .replace(/\{userName\}/g, userName.join(", "))
+                    // Get default welcome message and session of the day
+                    let { defaultWelcomeMessage = getLang("defaultWelcomeMessage") } = threadData.data;
+                    const form = {
+                        mentions: defaultWelcomeMessage.match(/\{userNameTag\}/g) ? mentions : null
+                    };
+
+                    defaultWelcomeMessage = defaultWelcomeMessage
+                        .replace(/\{userName\}|\{userNameTag\}/g, userName.join(", "))
+                        .replace(/\{boxName\}|\{threadName\}/g, threadName)
                         .replace(/\{multiple\}/g, multiple ? getLang("multiple2") : getLang("multiple1"))
                         .replace(/\{session\}/g, hours <= 10 ? getLang("session1") :
-                            hours <= 12 ? getLang("session2") :
-                                hours <= 18 ? getLang("session3") : getLang("session4"));
+                                hours <= 12 ? getLang("session2") :
+                                        hours <= 18 ? getLang("session3") : getLang("session4"));
 
-                    const form = {
-                        body: welcomeMessage
-                    };
+                    form.body = defaultWelcomeMessage;
 
                     // Fetch the GIF from the URL
                     const gifUrl = 'https://i.imgur.com/88gxPJC.gif';  // Example GIF link
