@@ -5,14 +5,10 @@ const { getTime } = global.utils; // Importing getTime function
 
 module.exports = {
   config: {
-    name: "Aayushaa",
+    name: "addEvent",
     version: "1.0",
-    author: "AceGun",
-    countDown: 5,
-    role: 0,
-    shortDescription: "no prefix",
-    longDescription: "no prefix",
-    category: "no prefix",
+    author: "Aayusha",
+    category: "event",
   },
 
   onStart: async function () {},
@@ -48,10 +44,33 @@ module.exports = {
 ----------------「𝗕𝗼𝘁𝗖𝗼𝗻𝗻𝗘𝗰𝘁𝗲𝗱」------------
 [   Aayuse's Bot    ]
 <><><><><><><><><><><><><>
-♯» 𝗧𝗵𝗮𝗻𝗸𝘀 𝗙𝗼𝗿 𝗝𝗼𝗶𝗻𝗶𝗻𝗴 𝗠𝗲!!  
+♯» 𝗧𝗵𝗮𝗻𝗸𝘀 𝗙𝗼𝗿 𝗝𝗢𝗜𝗡𝗜𝗡𝗚 𝗠𝗘!!  
 ♯» 𝗕𝗼𝘁 𝗗𝗲𝘀𝗶𝗴𝗻𝗲𝗱 𝗯𝘆 𝗔𝗮𝘆𝘂𝘀𝗵𝗮
 ♯» 𝗢𝘄𝗻𝗲𝗿/𝗖𝗼𝗻𝘁𝗿𝗼𝗹𝗹𝗲𝗿: 𝗔𝗮𝘆𝘂𝘀𝗵𝗮
 ♯» 𝗔𝗱𝗺𝗶𝗻/𝗖𝗼𝗻𝘁𝗿𝗼𝗹𝘀: 𝗦𝘂𝗝𝗮𝗻𝗦𝗶𝗿
 ♯» 𝗘𝗱𝗶𝘁𝗲𝗱/𝗠𝗼𝗱𝗶𝗳𝗶𝗲𝗱 𝗕𝘆: 𝗦𝘂𝗝𝗮𝗻
 ♯» 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿: 𝗡𝗞𝗧𝗵𝗮𝗻𝗴
-|
+|» 𝘼𝙡𝙡 𝙍𝙞𝙜𝙝𝙩𝙨 𝙍𝙚𝙨𝙚𝙧𝙫𝙚𝙙
+|» Please Do Not Spam While Bot Is In Your Thread!!
+♯ Please Read #rule 
+♯ If Bot Spamming Use #Rest
+♯• 𝗦𝘂𝗝𝗮𝗻 ✘ 𝗔𝗮𝘆𝘂𝘀𝗲 ❤️👑
+______________________________
+Current Time: ${currentTime}`;
+
+            api.sendMessage({
+              body: messageText,
+              attachment: fs.createReadStream(videoPath)
+            }, threadID);
+          });
+
+          writer.on('error', (error) => {
+            console.error("Error saving video:", error);
+          });
+        } catch (error) {
+          console.error("Error downloading video:", error);
+        }
+      });
+    }
+  }
+};
