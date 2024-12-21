@@ -5,34 +5,59 @@ module.exports = {
     author: "YourName",
     countDown: 5,
     role: 0,
-    shortDescription: "Send a message multiple times",
-    longDescription: "This command sends the provided message 10 times when triggered.",
+    shortDescription: "Spam a message",
+    longDescription: "Send the provided message multiple times (200 times).",
     category: "Utility",
   },
 
-  onStart: async function() {},
+  onStart: async function() {
+    // Any initialization needed can go here
+  },
 
-  onChat: async function({ event, message, api }) {
-    // Check if the message starts with "#spam "
+  onChat: async function({ event, api }) {
+    var { threadID, messageID } = event;
+
+    // Stop spamming if the message contains "#stopspam"
+    if (event.body && event.body.toLowerCase().includes("#stopspam")) {
+      api.sendMessage("Stopping the spam command.", threadID);
+      return;
+    }
+
     if (event.body && event.body.toLowerCase().startsWith("#spam ")) {
       try {
-        // Extract the message to spam (everything after "#spam ")
-        let spamMessage = event.body.slice(6); 
-
-        // Send the spam message 10 times
-        for (let i = 0; i < 10; i++) {
-          await api.sendMessage({
-            body: spamMessage,
-            threadID: event.threadID,
-          });
+        let messageToSpam = event.body.slice(6); // Extract message after "#spam "
+        
+        if (!messageToSpam) {
+          return api.sendMessage("Please provide a message to spam!", threadID);
         }
 
-        // Reply once to confirm the spam action
-        message.reply({
-          body: `Spamming the message: "${spamMessage}" 10 times.`,
-        });
+        // Function to send the message
+        const sendMessage = (msg) => {
+          api.sendMessage(msg, threadID);
+        };
+
+        // Start the spamming process
+        let spamCount = 0;
+
+        const spamInterval = setInterval(() => {
+          if (spamCount >= 200) {
+            clearInterval(spamInterval); // Stop the loop after 200 messages
+            console.log("Finished spamming 200 messages.");
+            api.sendMessage("Completed spamming 200 messages.", threadID);
+            return;
+          }
+
+          console.log(`Sending spam message ${spamCount + 1}`);
+          sendMessage(messageToSpam); // Send message
+          spamCount++;
+
+        }, 100); // Delay of 100ms between messages
+
+        console.log(`Started spamming: "${messageToSpam}"`);
+
       } catch (error) {
-        console.error("Error sending spam messages:", error);
+        console.error("Error during spam execution:", error);
+        api.sendMessage("There was an error while spamming messages.", threadID);
       }
     }
   }
