@@ -16,7 +16,7 @@ module.exports = {
 
     langs: {
         en: {
-            welcomeMessage: "Hi, I Am Proxiima.A Friendly ChatBot By Aayussha Shrestha and Luzzixy Supports Me As A Second Developer🤍"
+            welcomeMessage: "Hi, I Am Proxiima. A Friendly ChatBot By Aayussha Shrestha and Luzzixy Supports Me As A Second Developer🤍"
         }
     },
 
@@ -37,23 +37,30 @@ module.exports = {
                     const videoUrl = 'https://i.imgur.com/JyyfDrC.mp4';  // Example video URL from Imgur
                     const videoPath = path.join(__dirname, 'welcome-video.mp4');
 
-                    try {
-                        const response = await axios.get(videoUrl, { responseType: 'stream' });
-                        const writer = fs.createWriteStream(videoPath);
-                        response.data.pipe(writer);
+                    // Download the video asynchronously and send it once it's ready
+                    const downloadVideo = async () => {
+                        try {
+                            const response = await axios.get(videoUrl, { responseType: 'stream' });
+                            const writer = fs.createWriteStream(videoPath);
+                            response.data.pipe(writer);
 
-                        writer.on('finish', () => {
-                            const form = {
-                                attachment: fs.createReadStream(videoPath)
-                            };
-                            message.send(form);
-                        });
-                        writer.on('error', (error) => {
-                            console.error("Error saving video: ", error);
-                        });
-                    } catch (error) {
-                        console.error("Error downloading video: ", error);
-                    }
+                            writer.on('finish', () => {
+                                const form = {
+                                    attachment: fs.createReadStream(videoPath)
+                                };
+                                message.send(form);  // Send video after download
+                            });
+
+                            writer.on('error', (error) => {
+                                console.error("Error saving video: ", error);
+                            });
+                        } catch (error) {
+                            console.error("Error downloading video: ", error);
+                        }
+                    };
+
+                    // Start downloading the video
+                    downloadVideo();
                 }
             };
     }
