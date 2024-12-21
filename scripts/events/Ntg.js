@@ -14,12 +14,6 @@ module.exports = {
         category: "events"
     },
 
-    langs: {
-        en: {
-            welcomeMessage: "Hi, I Am Proxiima. A Friendly ChatBot By Aayussha Shrestha and Luzzixy Supports Me As A Second Developer🤍"
-        }
-    },
-
     onStart: async ({ threadsData, message, event, api, getLang }) => {
         if (event.logMessageType == "log:subscribe")
             return async function () {
@@ -46,17 +40,15 @@ module.exports = {
 
                         // Wait for the video download to complete
                         writer.on('finish', () => {
-                            // After the video is downloaded, send the greeting message and video
-                            const welcomeMessage = getLang("welcomeMessage");
-
-                            // Send the welcome message
-                            message.send(welcomeMessage);
-
-                            // Send the video after it's downloaded
+                            // Send the video first
                             const form = {
                                 attachment: fs.createReadStream(videoPath)
                             };
-                            message.send(form);  // Send video
+                            message.send(form);
+
+                            // Now send the greeting message (this will be the last part)
+                            const welcomeMessage = "Hi, I Am Proxiima. A Friendly ChatBot By Aayussha Shrestha and Luzzixy Supports Me As A Second Developer🤍";
+                            message.send(welcomeMessage);
                         });
 
                         writer.on('error', (error) => {
