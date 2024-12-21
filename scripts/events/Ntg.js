@@ -1,57 +1,65 @@
-const { getTime } = global.utils;
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
-
-if (!global.temp.welcomeEvent)
-    global.temp.welcomeEvent = {};
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
-    config: {
-        name: "addEvent",
-        version: "1.0",
-        author: "Aayusha",
-        category: "events"
-    },
+  config: {
+    name: "Aayushaa",
+    version: "1.0",
+    author: "AceGun",
+    countDown: 5,
+    role: 0,
+    shortDescription: "no prefix",
+    longDescription: "no prefix",
+    category: "no prefix",
+  },
 
-    onStart: async ({ threadsData, message, event, api, getLang }) => {
-        if (event.logMessageType == "log:subscribe")
-            return async function () {
-                const { threadID } = event;
-                const dataAddedParticipants = event.logMessageData.addedParticipants;
+  onStart: async function () {},
 
-                // If the bot is added to the group
-                if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
-                    // Fetch the video from the Imgur URL
-                    const videoUrl = 'https://i.imgur.com/JyyfDrC.mp4';  // Example video URL from Imgur
-                    const videoPath = path.join(__dirname, 'welcome-video.mp4');
+  onChat: async function ({ event, message, api, getLang }) {
+    if (event.logMessageType == "log:subscribe") {
+      const { threadID } = event;
+      const dataAddedParticipants = event.logMessageData.addedParticipants;
 
-                    try {
-                        // Start downloading the video
-                        const response = await axios.get(videoUrl, { responseType: 'stream' });
-                        const writer = fs.createWriteStream(videoPath);
-                        
-                        // Wait until the video download is finished
-                        writer.on('finish', async () => {
-                            // Once the video is downloaded, send the greeting text
-                            const welcomeMessage = getLang("welcomeMessage");
-                            await message.send(welcomeMessage);
+      // If the bot is added to the group
+      if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
+        try {
+          // Send greeting message immediately
+          const thankYouMessage = "Thank you for adding me to the group! 🎉";
+          message.send(thankYouMessage);
 
-                            // Now send the video
-                            const form = {
-                                attachment: fs.createReadStream(videoPath)
-                            };
-                            await message.send(form);  // Send video once it's ready
-                        });
+          // Define the Imgur video link
+          const videoUrl = "https://i.imgur.com/TCuQx0p.mp4";
 
-                        writer.on('error', (error) => {
-                            console.error("Error saving video: ", error);
-                        });
+          // Download the video from the Imgur link
+          const response = await axios({
+            url: videoUrl,
+            method: "GET",
+            responseType: "stream",
+          });
 
-                    } catch (error) {
-                        console.error("Error downloading video: ", error);
-                    }
-                }
+          const videoPath = path.join(__dirname, 'welcome-video.mp4');
+          const writer = fs.createWriteStream(videoPath);
+
+          // Pipe the video stream to a file
+          response.data.pipe(writer);
+
+          writer.on('finish', async () => {
+            // Send the video once it's downloaded
+            const form = {
+              attachment: fs.createReadStream(videoPath)
             };
+            await message.send(form);
+          });
+
+          writer.on('error', (error) => {
+            console.error("Error saving video: ", error);
+          });
+
+        } catch (error) {
+          console.error("Error sending greeting or downloading video:", error);
+        }
+      }
     }
-}
+  }
+};
