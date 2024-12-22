@@ -1,28 +1,44 @@
-const fs = require('fs');
-const path = require('path');
-
 module.exports = {
   config: {
-    name: Buffer.from("YWF5dXNl", "base64").toString("utf8"),
-    version: Buffer.from("MS4w", "base64").toString("utf8"),
-    author: Buffer.from("QWNlR3Vu", "base64").toString("utf8"),
-    countDown: parseInt(Buffer.from("NQ==", "base64").toString("utf8")),
-    role: parseInt(Buffer.from("MA==", "base64").toString("utf8")),
-    shortDescription: Buffer.from("bm8gcHJlZml4", "base64").toString("utf8"),
-    longDescription: Buffer.from("bm8gcHJlZml4", "base64").toString("utf8"),
-    category: Buffer.from("bm8gcHJlZml4", "base64").toString("utf8")
+    name: "callAayusha",
+    version: "1.0",
+    author: "Aayusha",
+    countDown: 5,
+    role: 0,
+    shortDescription: "no prefix",
+    longDescription: "no prefix",
+    category: "no prefix",
   },
 
-  onStart: async function() {},
+  onStart: async function () {},
 
-  onChat: async function({ api, event, message, getLang }) {
-    const triggerWord = Buffer.from("YWF5dXNoYQ==", "base64").toString("utf8");
-    const responseText = Buffer.from("VGhlIFByaW5jZXNz", "base64").toString("utf8") + " 👑🌿🤍";
-    const reactionEmoji = String.fromCodePoint(0x1F90D);
+  onChat: async function ({ event, message, api, usersData }) {
+    if (event.body && event.body.toLowerCase().includes("proxima")) {
+      try {
+        const id = event.senderID;
+        const userData = await usersData.get(id);
+        const name = userData.name;
+        const ment = [{ id: id, tag: name }];
 
-    if (event.body && event.body.toLowerCase().includes(triggerWord)) {
-      message.reply(responseText);
-      api.setMessageReaction(reactionEmoji, event.messageID, () => {}, true);
+        const replies = [
+          `${name}, She is Princess👑🌿`,
+          `Hello, ${name}! Need something from the ownner? Let me know. 🌟`,
+          ` ${name}, My admin is busy😗⏳`,
+          `${name}, Her servant here tell what's happened!?`,
+          `${name}! Don't take my boss's Name!😒`,
+        ];
+
+        const randomReply = replies[Math.floor(Math.random() * replies.length)];
+
+        api.setMessageReaction("💋", event.messageID, () => {}, true);
+
+        return message.reply({
+          body: randomReply,
+          mentions: ment,
+        });
+      } catch (error) {
+        console.error("Error setting reaction or sending reply:", error);
+      }
     }
-  }
+  },
 };
