@@ -54,7 +54,7 @@ module.exports = {
 
       // Replies for "ayusha"
       if (event.body && event.body.toLowerCase().includes("ayusha")) {
-        const repliesForHello = [
+        const repliesForAyusha = [
           `${name}! She is busy sir/miss!`,
           `${name}, Anything you want from my admin sir/miss?`,
           `${name}! Aayusha's Servant here tell me what happened!`,
