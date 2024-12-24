@@ -4,6 +4,9 @@ const yts = require("yt-search");
 const axios = require('axios');
 const tinyurl = require('tinyurl');
 
+// Read cookies from a file (make sure your file path is correct)
+const cookies = fs.readFileSync('./cookies.txt', 'utf-8');
+
 module.exports = {
   config: {
     name: "sing",
@@ -16,8 +19,8 @@ module.exports = {
 
   onStart: async function ({ api, event, message }) {
     try {
-        if (event.type === "message_reply" && ["audio", "video"].includes(event.messageReply.attachments[0].type)) {
-            const attachmentUrl = event.messageReply.attachments[0].url;
+      if (event.type === "message_reply" && ["audio", "video"].includes(event.messageReply.attachments[0].type)) {
+        const attachmentUrl = event.messageReply.attachments[0].url;
         const urls = await tinyurl.shorten(attachmentUrl) || args.join(' ');
         const response = await axios.get(`https://www.api.vyturex.com/songr?url=${urls}`);
 
@@ -32,7 +35,10 @@ module.exports = {
 
           const video = searchResults.videos[0];
           const videoUrl = video.url;
-          const stream = ytdl(videoUrl, { filter: "audioonly" });
+          const stream = ytdl(videoUrl, {
+            filter: "audioonly",
+            cookies: cookies // Use the cookies to authenticate
+          });
           const fileName = `music.mp3`;
           const filePath = `${__dirname}/tmp/${fileName}`;
 
@@ -84,7 +90,10 @@ module.exports = {
 
         const video = searchResults.videos[0];
         const videoUrl = video.url;
-        const stream = ytdl(videoUrl, { filter: "audioonly" });
+        const stream = ytdl(videoUrl, {
+          filter: "audioonly",
+          cookies: cookies // Use the cookies to authenticate
+        });
         const fileName = `music.mp3`;
         const filePath = `${__dirname}/tmp/${fileName}`;
 
