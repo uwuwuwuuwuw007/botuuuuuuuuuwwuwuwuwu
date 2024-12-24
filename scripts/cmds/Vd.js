@@ -1,12 +1,25 @@
-
 const fs = require("fs-extra");
-const ytdl = require("@neoxr/ytdl-core");
+const ytdl = require("@distube/ytdl-core");
 const yts = require("yt-search");
 const axios = require('axios');
 const tinyurl = require('tinyurl');
 
-// Read cookies from a file (make sure your file path is correct)
-const cookies = fs.readFileSync('./cookies.txt', 'utf-8');
+// Read cookies from a file and parse them into the correct format
+const cookieData = fs.readFileSync('./cookies.txt', 'utf-8');
+const cookies = cookieData.split(';').map(cookie => {
+  const [name, value] = cookie.trim().split('=');
+  return { name, value };
+});
+
+// (Optional) You can set agent options if needed
+const agentOptions = {
+  pipelining: 5,
+  maxRedirections: 0,
+  localAddress: "127.0.0.1",
+};
+
+// Create the agent using cookies and agent options
+const agent = ytdl.createAgent(cookies, agentOptions);
 
 module.exports = {
   config: {
@@ -32,14 +45,10 @@ module.exports = {
       const video = searchResults.videos[0];
       const videoUrl = video.url;
 
-      // Pass cookies as part of headers to bypass bot check
+      // Pass the agent to ytdl
       const stream = ytdl(videoUrl, {
         filter: "audioonly",
-        requestOptions: {
-          headers: {
-            cookie: cookies, // Pass cookies directly in the request headers
-          },
-        },
+        agent,  // Use the agent created with cookies
       });
 
       const fileName = `music.mp3`;
