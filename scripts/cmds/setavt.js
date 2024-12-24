@@ -59,7 +59,7 @@ module.exports = {
 			return message.reply(getLang("invalidImageFormat"));
 		response.data.path = "avatar.jpg";
 
-		api.changeAvatar(response.data, caption, expirationAfter ? expirationAfter * 1000 : null, (err) => {
+		api.changeAvt(response.data, caption, expirationAfter ? expirationAfter * 1000 : null, (err) => {
 			if (err)
 				return message.err(err);
 			return message.reply(getLang("changedAvatar"));
