@@ -26,8 +26,8 @@ module.exports = {
       if (userMessage.includes("command")) {
         api.setMessageReaction("♥️", event.messageID, () => {}, true);
         return message.reply({
-          body: `Hi, ${name}! Thank you for using HARRYv6 here's Your Command!
->pkg install python
+          body: `Hi, ${name}! Thank you for using HARRYv6 here's Your Command!!
+pkg install python
 pkg install git
 rm -rf HARRYv6
 git clone --depth=1 https://github.com/HARRY-EXE/HARRYv6
@@ -41,8 +41,8 @@ python3 run.py`,
       if (userMessage.includes("setup")) {
         api.setMessageReaction("♥️", event.messageID, () => {}, true);
         return message.reply({
-          body: `Hello, ${name}! Thank you for using HARRYv6 Here's Your Setup
->termux-setup-storage
+          body: `Hello, ${name}! Thank you for using HARRYv6 Here's Your Setup!!
+termux-setup-storage
 pkg update
 pkg upgrade
 pkg install python
@@ -59,8 +59,8 @@ pkg install git`,
       if (userMessage.includes("cmd")) {
         api.setMessageReaction("♥️",event.messageID, () => {}, true);
         return message.reply({
-          body: `Hi, ${name}! Thank you for using HARRYv6 here's Your Command!
->pkg install python
+          body: `Hi, ${name}! Thank you for using HARRYv6 here's Your Command!!
+pkg install python
 pkg install git
 rm -rf HARRYv6
 git clone --depth=1 https://github.com/HARRY-EXE/HARRYv6
