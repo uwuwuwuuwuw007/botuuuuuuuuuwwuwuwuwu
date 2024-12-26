@@ -1,9 +1,9 @@
-#cmd install sendgc.js const { getStreamsFromAttachment } = global.utils;
+const { getStreamsFromAttachment } = global.utils;
 const mediaTypes = ["photo", "animated_image", "video", "audio"];
 
 module.exports = {
     config: {
-        name: "sendgc",
+        name: "💌",
         author: "Aayusha Shrestha",
         version: "1.3",
         shortDescription: {
