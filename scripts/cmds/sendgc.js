@@ -3,7 +3,7 @@ const mediaTypes = ["photo", "animated_image", "video", "audio"];
 
 module.exports = {
     config: {
-        name: "SG",
+        name: "s3",
         author: "Aayusha Shrestha",
         version: "1.3",
         shortDescription: {
