@@ -1,240 +1,136 @@
-<img src="https://i.ibb.co/RQ28H2p/banner.png" alt="banner">
-<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px"> Goat Bot V2- Chatbot Messenger</h1>
+# Proxima
 
+ **[Proxima]**
 
-## Introduction
+**Proxima** is a powerful and multi-functional bot designed to help with group management, fun interactions, and a variety of utility commands. Whether you’re running a small community or managing a large group, Proxima is here to make your life easier by providing a wide range of features to enhance your chat experience.
 
-#### Join us in [Messenger Group](https://m.me/j/AbZ6Bj-uS3npg7di/)🍪
-###### If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
+## Features 🎉
 
-- If you encounter any issues or have questions related to this project, please don't hesitate to reach out to us on messenger. we're here to assist you!
-
-<p align="center">
-		<img align="center" alt="PNG" src="https://i.postimg.cc/Y2XShSm8/86678c65-896a-47fe-8256-3e8e76dd26d6.jpg"/>
-<h1 align='center'>
-	
-- [📝 **Note**](#-note)
-- [🚧 **Requirement**](#-requirement)
-- [📝 **Tutorial**](#-tutorial)
-- [🔔 **How to get notification when have new update?**](#-how-to-get-notification-when-have-new-update)
-- [🆙 **How to Update**](#-how-to-update)
-- [🛠️ **How to create new commands**](#️-how-to-create-new-commands)
-- [💭 **Support**](#-support)
-- [📚 **Support Languages in source code**](#-support-languages-in-source-code)
-- [📌 **Common Problems**](#-common-problems)
-- [❌ **DO NOT USE THE ORIGINAL UNDERGRADUATE VERSION**](#-do-not-use-the-original-undergraduate-version)
-- [📸 **Screenshots**](#-screenshots)
-- [✨ **Copyright (C)**](#-copyright-c)
-- [📜 **License**](#-license)
-
-<hr>
-
-## 📝 **Note**
-- This is a messenger chat bot using a personal account, using an [unofficial api](https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md) ([Origin here](https://github.com/Schmavery/facebook-chat-api)) and this may lead to facebook account being locked due to spam or other reasons. 
-- So, I recommend using a clone account (one that you're willing to throw away at any time)
-- ***I am not responsible for any problems that may arise from using this bot.***
-
-## 🚧 **Requirement**
-- Node.js 16.x [Download](https://nodejs.org/dist/v16.20.0) | [Home](https://nodejs.org/en/download/) | [Other versions](https://nodejs.org/en/download/releases/)
-- Knowledge of **programming**, javascript, nodejs, unofficial facebook api
-
-## 📝 **Tutorial**
-Tutorial has been uploaded on YouTube
-- For mobile phone: https://www.youtube.com/watch?v=grVeZ76HlgA
-- For vps/windows: https://www.youtube.com/watch?v=uCbSYNQNEwY
+### 🐐 **Antispam**
+Proxima helps you keep your chat clean and free from spammy behavior. It detects when a user is sending too many messages within a short time frame and automatically takes action to prevent spamming. Depending on your configuration, Proxima can:
+- **Warn users** before taking any action, allowing them to adjust their behavior.
+- **Kick users** who continue to spam after being warned, maintaining the quality of your group chat.
   
-Summary instructions:
-- See [here](https://github.com/ntkhang03/Goat-Bot-V2/blob/main/STEP_INSTALL.md)
+With this feature, Proxima ensures that your community is free from disruptive behavior while maintaining a friendly environment.
 
-## 🔔 **How to get notification when have new update?**
-- Click on the `Watch` button in the upper right corner of the screen and select `Custom` and select `Pull requests` and `Releases` and click `Apply` to get notified when there is a new update.
+### 💻 **Shell Commands**
+Proxima gives you the ability to execute **shell commands** directly from the chat. This is incredibly useful for system administrators or advanced users who need to interact with their server without leaving the chat. Some common use cases include:
+- **Server Monitoring**: Check the health of your server or retrieve system status information directly from the chat.
+- **Automation**: Run commands to automate server tasks or retrieve logs in real-time.
+- **Efficiency**: Save time by executing commands without switching to a terminal or command-line interface.
 
-## 🆙 **How to Update**
-Tutorial has been uploaded on YouTube
-- on phone/repl: https://youtu.be/grVeZ76HlgA?t=1342
-- on vps/computer: https://youtu.be/uCbSYNQNEwY?t=508
+Proxima’s shell command integration is powerful yet simple, designed to make admin tasks easier and more efficient.
 
-## 🛠️ **How to create new commands**
-- See [here](https://github.com/ntkhang03/Goat-Bot-V2/blob/main/DOCS.md)
+### 🎈 **Fun Interactions**
+Proxima isn’t all about management and utilities—it's also designed to bring fun and entertainment to your group! Proxima offers various fun interactions, such as:
+- **Jokes**: Get random jokes to lighten up the mood.
+- **Games**: Play interactive games like trivia or word games directly within the chat.
+- **Personalized Messages**: Proxima can respond to specific keywords with humorous or friendly messages, keeping the conversation lively.
 
-## 💭 **Support**
-If you have major coding issues with this bot, please join and ask for help.
-- https://discord.com/invite/DbyGwmkpVY (recommended)
-- https://www.facebook.com/groups/goatbot
-- https://www.facebook.com/groups/goatbot/permalink/493150412403231
-- https://m.me/j/AbYrIGusyc0M402z
-- ~~https://t.me/gatbottt~~ (no longer supported)
-- ***Please do not inbox me, I do not respond to private messages, any questions please join the chat group for answers. ThankThanks!***
+This feature ensures that your community stays engaged and entertained, all while keeping the chat atmosphere friendly and welcoming.
 
-## 📚 **Support Languages in source code**
-- Currently, the bot supports 2 languages:
-- [x] `en: English`
-- [x] `vi: Vietnamese`
+### 🛠️ **Utility Commands**
+Proxima comes with a wide range of utility commands that can assist with various tasks within your group:
+- **Group Management**: Easily manage members, assign roles, and moderate the chat with simple commands.
+- **System Information**: Retrieve useful information such as system uptime, active users, and more.
+- **Polls and Surveys**: Proxima allows you to create and manage polls to engage your community and gather feedback.
+- **Custom Commands**: Add custom commands tailored to your group’s specific needs, making the bot more flexible and adaptive.
 
-- Change language in `config.json` file
-- You can customize the language in the folder `languages/`, `languages/cmds/` and `languages/events/`
+These utility commands are designed to help you keep your group organized, maintain control, and make the admin experience as seamless as possible.
 
-## 📌 **Common Problems**
-<details>
-	<summary>
-		📌 Error 400: redirect_uri_mismatch
-	</summary>
-	<p><img src="https://i.ibb.co/6Fbjd4r/image.png" width="250px"></p> 
-	<p>1. Enable Google Drive API: <a href="https://youtu.be/nTIT8OQeRnY?t=347">Tutorial</a></p>
-	<p>2. Add uri <a href="https://developers.google.com/oauthplayground">https://developers.google.com/oauthplayground</a> (not <a href="https://developers.google.com/oauthplayground/">https://developers.google.com/oauthplayground/</a>) to <b>Authorized redirect URIs</b> in <b>OAuth consent screen:</b> <a href="https://youtu.be/nTIT8OQeRnY?t=491">Tutorial</a></p>  
-	<p>3. Choose <b>https://www.googleapis.com/auth/drive</b> and <b>https://mail.google.com/</b> in <b>OAuth 2.0 Playground</b>: <a href="https://youtu.be/nTIT8OQeRnY?t=600">Tutorial</a></p>
-</details>
+### 🧠 **AI Assistant**
+Proxima also comes equipped with an **AI-powered assistant** that can interact with users, answer questions, and engage in natural conversations. Just like AI systems such as **Gemini**, Proxima can provide:
+- **Intelligent Conversations**: Engage users in meaningful, interactive conversations based on natural language understanding. Proxima can talk about various topics, provide information, or even offer witty responses.
+- **Question-Answering**: Proxima can help answer questions on a variety of subjects, from general knowledge to more specific topics based on the content it has been trained on.
+- **Fun AI Chats**: Let users interact with the AI for some fun and engaging chat sessions. Proxima can generate creative responses, tell stories, or even play text-based games like trivia.
 
-<details>
-	<summary>
-		📌 Error for site owners: Invalid domain for site key
-	</summary>
-		<p><img src="https://i.ibb.co/2gZttY7/image.png" width="250px"></p>
-		<p>1. Go to <a href="https://www.google.com/recaptcha/admin">https://www.google.com/recaptcha/admin</a></p>
-		<p>2. Add domain <b>repl.co</b> (not <b>repl.com</b>) to <b>Domains</b> in <b>reCAPTCHA v2</b> <a href="https://youtu.be/nTIT8OQeRnY?t=698">Tutorial</a></p>
-</details>
+The AI assistant provides an engaging and interactive experience that adds another layer of functionality to Proxima, making it not just a bot for managing groups but a bot that can talk and entertain!
 
-<details>
-	<summary>
-		📌 GaxiosError: invalid_grant, unauthorized_client 
-	</summary>
-		<p><img src="https://i.ibb.co/n7w9TkH/image.png" width="250px"></p>
-		<p><img src="https://i.ibb.co/XFKKY9c/image.png" width="250px"></p>
-		<p><img src="https://i.ibb.co/f4mc5Dp/image.png" width="250px"></p>
-		<p>- If you don't publish the project in google console, the refresh token will expire after 1 week and you need to get it back. <a href="https://youtu.be/nTIT8OQeRnY?t=445">Tuatorial</a></p>
-</details>
+---
 
-<details>
-	<summary>
-		📌 GaxiosError: invalid_client
-	</summary>
-		<p><img src="https://i.ibb.co/st3W6v4/Pics-Art-01-01-09-10-49.jpg" width="250px"></p>
-		<p>- Check if you have entered your google project client_id correctly <a href="https://youtu.be/nTIT8OQeRnY?t=509">Tuatorial</a></p>
-</details>
+## Installation & Setup 🚀
 
-<details>
-	<summary>
-		📌 Error 403: access_denied
-	</summary>
-		<p><img src="https://i.ibb.co/dtrw5x3/image.png" width="250px"></p>
-		<p>- If you don't publish the project in google console only the approved accounts added to the project can use it <a href="https://youtu.be/nTIT8OQeRnY?t=438">Tuatorial</a></p>
-</details>
+1. **Install Proxima**: 
+   To install Proxima, simply follow the steps below:
+   - Ensure that you have the necessary permissions in your server or group to add a bot.
+   - Use the command `#cmd install proxima` (or the relevant installation command based on your bot platform).
+   - Wait for Proxima to initialize, and you’ll be ready to go!
 
-## ❌ **DO NOT USE THE ORIGINAL UNDERGRADUATE VERSION**
-- The use of unknown source code can lead to the device being infected with viruses, malware, hacked social accounts, banks, ...
-- Goat-Bot-V2 is only published at https://github.com/ntkhang03/Goat-Bot-V2, all other sources, all forks from other github, replit,... are fake, violate policy
-- If you use from other sources (whether accidentally or intentionally) it means that you are in violation and will be banned without notice
-## 📸 **Screenshots**
-- ### Bot
-<details>
-	<summary>
- 		Rank system
-	</summary>
+2. **Configure Proxima**:
+   After installation, configure Proxima by editing the configuration settings:
+   - Adjust **cooldown** settings to control message frequency.
+   - Enable or disable features such as **antispam** or **custom commands** based on your needs.
+   - Set **warning messages** and **kick messages** to personalize the bot’s responses.
 
-  - Rank card:
-  <p><img src="https://i.ibb.co/d0JDJxF/rank.png" width="399px"></p>
+3. **Run Commands**:
+   Proxima is now ready to serve your group. Use any of the available commands by typing them in the chat, like `!antispam`, `!shell`, or `!fun`.
 
-  - Rankup notification:
-  <p><img src="https://i.ibb.co/WgZzthH/rankup.png" width="399px"></p>
+---
 
-  - Custom rank card:
-  <p><img src="https://i.ibb.co/hLTThLW/customrankcard.png" width="399px"></p>
-</details>
+## How to Use Proxima 📚
 
-<details>
-	<summary>
- 		Weather
-	</summary>
-	<p><img src="https://i.ibb.co/2FwWVLv/weather.png" width="399px"></p>
-</details>
+Once Proxima is installed and configured, using it is as easy as typing a command in the chat. Here’s how you can use some of its key features:
 
-<details>
-	<summary>
- 		Auto send notification when have user join or leave box chat (you can custom message)
-	</summary>
-	<p><img src="https://i.ibb.co/Jsb5Jxf/wcgb.png" width="399px"></p>
-</details>
+1. **Antispam**:
+   - Type `!antispam enable` to activate the spam protection.
+   - Configure the cooldown time and maximum messages in the bot’s settings.
+   
+2. **Shell Commands**:
+   - Simply type `!shell [command]` to execute a shell command directly from the chat.
+   - Example: `!shell uptime` to check your server's uptime.
 
-<details>
-	<summary>
- 		Openjourney
-	</summary>
-	<p><img src="https://i.ibb.co/XJfwj1X/Screenshot-2023-05-09-22-43-58-630-com-facebook-orca.jpg" width="399px"></p>
-</details>
+3. **Fun Interactions**:
+   - Type `!joke` to get a random joke.
+   - Type `!game trivia` to start a trivia game.
 
-<details>
-	<summary>
- 		GPT
-	</summary>
-	<p><img src="https://i.ibb.co/D4wRbM3/Screenshot-2023-05-09-22-47-48-037-com-facebook-orca.jpg" width="399px"></p>
-	<p><img src="https://i.ibb.co/z8HqPkH/Screenshot-2023-05-09-22-47-53-737-com-facebook-orca.jpg" width="399px"></p>
-	<p><img src="https://i.ibb.co/19mZQpR/Screenshot-2023-05-09-22-48-02-516-com-facebook-orca.jpg" width="399px"></p>
-</details>
+4. **Utility Commands**:
+   - Type `!poll [question]` to create a poll for your group.
+   - Type `!info` to retrieve system or group information.
 
+5. **AI Assistant**:
+   - Type `!proxi hello` to start a conversation with Proxima’s AI.
+   - Type `!proxi [question]` to ask the AI a question.
+   - Type `!proxi joke` to get a funny response from the AI.
 
+---
 
-- ### Dashboard
-<details>
-	<summary>
- 		Home:
-	</summary>
-	<p><img src="https://i.ibb.co/xzv6s2j/dbHome.png" width="399px"></p>
-</details>
+## Support & Contributions 🤝
 
-<details>
-	<summary>
- 		Stats:
-	</summary>
-	<p><img src="https://i.ibb.co/zVZv9LF/dbStats.png" width="399px"></p>
-</details>
+**Proxima** is open to contributions! If you have new features, fixes, or suggestions, feel free to submit a pull request or reach out to us. We're always looking to improve Proxima to make it more useful and fun for everyone.
 
-<details>
-	<summary>
- 		Login/Register:
-	</summary>
-	<p><img src="https://i.ibb.co/SK61MRx/dbLogin.png" width="399px"></p>
-	<p><img src="https://i.ibb.co/1rchbb1/db-Register.png" width="399px"></p>
-</details>
+For **support**, you can:
+- Join our [Discord server](#) (if available) for help and discussions.
+- Open an issue on GitHub for bug reports or feature requests.
 
-<details>
-	<summary>
- 		Dashboard Thread:
-	</summary>
-	<p><img src="https://i.ibb.co/NK5yYwx/dbThread.png" width="399px"></p>
-</details>
+---
 
-<details>
-	<summary>
- 		Custom on/off:
-	</summary>
-	<p><img src="https://i.ibb.co/mJqsP2L/dbCustom.png" width="399px"></p>
-</details>
+## Acknowledgements 🙏
 
-<details>
-	<summary>
- 		Custom welcome message (similar with leave, rankup (coming soon), custom command (coming soon))
-	</summary>
-	<p><img src="https://i.ibb.co/3SyfQkz/db-Custom-Welcome.png" width="399px"></p>
-</details>
+Special thanks to all contributors who have helped make Proxima better with their feedback, suggestions, and contributions. Proxima wouldn't be what it is today without you!
 
-## ✨ **Copyright (C)**
-- **[NTKhang (NTKhang03)](https://github.com/ntkhang03)**
+---
 
-## 📜 **License**
+Enjoy using **Proxima the Goat Bot** in your community, and feel free to explore all the powerful features it offers! 🎉
 
-**VIETNAMESE**
+## Owner Information 👑
 
-- ***Nếu bạn vi phạm bất kỳ quy tắc nào, bạn sẽ bị cấm sử dụng dự án của tôi***
-- Không bán mã nguồn của tôi
-- Không tự xưng là chủ sở hữu của mã nguồn của tôi
-- Không kiếm tiền từ mã nguồn của tôi (chẳng hạn như: mua bán lệnh, mua bán/cho thuê bot, kêu gọi quyên góp, v.v.)
-- Không xóa/sửa đổi credit (tên tác giả) trong mã nguồn của tôi
+Proxima is created and maintained by **Aayusha**, a passionate developer who loves building tools to make life easier and more fun in communities.
 
-**ENGLISH**
+- **Owner Name**: Aayusha Shrestha
+- **Role**: Bot Developer & Creator
+- **Location**: [Tokyo,Japan]
+- **Contact**: You can reach out to me via [(Aashilyshrestha@clubmember.org)]
 
-- ***If you violate any rules, you will be banned from using my project***
-- Don't sell my source code
-- Don't claim my source code as your own
-- Do not monetize my source code (such as: buy and sell commands, buy and sell bots, call for donations, etc.)
-- Don't remove/edit my credits (author name) in my source code
+If you have any questions or suggestions for Proxima, feel free to reach out to me anytime!
 
+---
+
+## Owner's Video 🎥
+
+Check out the **owner's introduction** video where I explain more about Proxima and its features!
+
+[![Owner's Introduction Video](https://i.imgur.com/nG6pgO7.jpeg)](https://www.youtube.com/watch?v=examplelink)
+
+Click the image above to watch the video!
+
+---
