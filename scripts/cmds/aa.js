@@ -1,11 +1,11 @@
-let lastReplyIndexAayusha = null;
-let lastReplyIndexAyusha = null;
+let lastReplyIndexSoyek = null;
+let lastReplyIndexsoyek = null;
 
 module.exports = {
   config: {
-    name: "callAayusha",
+    name: "callSoyek",
     version: "1.0",
-    author: "Aayusha",
+    author: "Soyek Daii",
     countDown: 5,
     role: 0,
     shortDescription: "no prefix",
@@ -31,18 +31,18 @@ module.exports = {
         return { reply: replies[newIndex], index: newIndex };
       };
 
-      // Replies for "Aayusha"
-      if (event.body && event.body.toLowerCase().includes("aayusha")) {
-        const repliesForAayusha = [
-          `${name}, She is Princess👑🌿`,
-          `Hello, ${name}! Need something from the owner? Let me know. 🌟`,
-          `${name}, My admin is busy😗⏳`,
-          `${name}, Her servant here tell what's happened!?`,
-          `${name}! Don't take my boss's Name!😒`,
+      // Replies for "Soyek"
+      if (event.body && event.body.toLowerCase().includes("soyek")) {
+        const repliesForSoyek = [
+          `${name}, Yo Mero Daii Ho 🤷🏼‍♂️🙄`,
+          `Hello, ${name}! Mero Dai Sanga Kei Vannu parne thiyo ki? Malai Van. 🌟`,
+          `${name}, Mero Dai Bg Xa Ekxin la😗⏳`,
+          `${name}, Katti dai lai matra khojxau maiiya hami sojo ko chai man haina ra🤭!?`,
+          `${name}! Mero Daii Ko Nam Nali Ta Tero Mukh Bata!😒`,
         ];
 
-        const { reply, index } = getRandomReply(repliesForAayusha, lastReplyIndexAayusha);
-        lastReplyIndexAayusha = index;
+        const { reply, index } = getRandomReply(repliesForSoyek, lastReplyIndexSoyek);
+        lastReplyIndexSoyek = index;
 
         api.setMessageReaction("💬", event.messageID, () => {}, true);
 
@@ -52,16 +52,16 @@ module.exports = {
         });
       }
 
-      // Replies for "ayusha"
-      if (event.body && event.body.toLowerCase().includes("ayusha")) {
-        const repliesForAyusha = [
-          `${name}! She is busy sir/miss!`,
-          `${name}, Anything you want from my admin sir/miss?`,
-          `${name}! Aayusha's Servant here tell me what happened!`,
+      // Replies for "soyek"
+      if (event.body && event.body.toLowerCase().includes("soyek")) {
+        const repliesForSoyek = [
+          `${name}! Mero Dai Bg Xa Ekxin Uncle hoki Aunty ho🙄`,
+          `${name}, Ekxin hau katti hatar vako kei thiyo vane malai van?`,
+          `${name}! Soyek Dai ko vai ho malai vanda pani kei hunna hau!`,
         ];
 
-        const { reply, index } = getRandomReply(repliesForAyusha, lastReplyIndexAyusha);
-        lastReplyIndexAyusha = index;
+        const { reply, index } = getRandomReply(repliesForSoyek, lastReplyIndexSoyek);
+        lastReplyIndexSoyek = index;
 
         api.setMessageReaction("💬", event.messageID, () => {}, true);
 
