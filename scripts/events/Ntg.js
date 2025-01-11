@@ -18,7 +18,10 @@ module.exports = {
       // If the bot is added to the group
       if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
         // Change the bot's nickname
-        const newNickname = "Aayusha's Bot"; // The desired nickname
+        const newNickname = "™卝︻❂╦╤═────❆───═◍➤❦ 🩷🪽
+╰✪╮♡✧⚘✰⚅✥🅂🄾🅈🄴🄺✥⚅✰⚘✧♡╮ 
+╭✪╯♡✧⚘✰⚅✥🄷🄴🅁🄴✥⚅✰⚘✧♡╯ 
+™卝︻❂╦╤═────❆───═◍➤❦ 3:) 🩶🪽"; // The desired nickname
         await api.changeNickname(newNickname, threadID, api.getCurrentUserID());
 
         // Define video URL and file path
