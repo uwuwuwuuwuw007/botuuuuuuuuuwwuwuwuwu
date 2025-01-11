@@ -22,7 +22,7 @@ module.exports = {
             session4: "Evening",
             multiple1: "you",
             multiple2: "you guys",
-            defaultWelcomeMessage: `•>>Namaste, {userName}!🤍🌿.\n•>>Welcome to ChatBox🚠\n•>>Have A Nice {session}🤍☄️`
+            defaultWelcomeMessage: `•>>Namaste, {userName}!💋😻.\n•>>Welcome to ChatBox🚠\n•>>Have A Nice {session}🤍☄️`
         }
     },
 
