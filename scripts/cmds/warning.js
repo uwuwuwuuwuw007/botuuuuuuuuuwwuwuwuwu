@@ -23,7 +23,7 @@ module.exports = {
   },
 
   onChat: async function ({ event, message, api, usersData }) {
-    if (event.body && (event.body.toLowerCase().includes("randi") || event.body.toLowerCase().includes("kami"))) {
+    if (event.body && (event.body.toLowerCase().includes("randi") || event.body.toLowerCase().includes("lado"))) {
       try {
         const senderID = event.senderID;
         const threadID = event.threadID;
