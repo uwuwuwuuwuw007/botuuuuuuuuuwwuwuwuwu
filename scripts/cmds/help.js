@@ -114,7 +114,7 @@ __________________________
 |•「 87 」 » Cat           
 |•「 88 」 » Cardinfo2     
 ---------------------------
-» Aayuse's Personal Bot🤍
+» Soyek's Botwa 🩶🚀
 » Admin Protected🛡️
 » Don't Spam Command⚔️
 » Be Friendly With Bot🔰
