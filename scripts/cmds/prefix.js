@@ -5,7 +5,7 @@ module.exports = {
 	config: {
 		name: "prefix",
 		version: "1.5",
-		author: "Aayusha",
+		author: "Abhi",
 		countDown: 5,
 		role: 0,
 		description: "Change the command prefix for your chat or the entire bot system (admin only) and add a music prefix with song link support",
@@ -72,12 +72,12 @@ module.exports = {
 	},
 	onChat: async function ({ event, message, threadsData, getLang }) {
 		if (event.body && event.body.toLowerCase() === "prefix") {
-			const imageUrl = "https://i.imgur.com/yxNEy7A.gif";
+			const imageUrl = "https://i.imgur.com/ZOBVUsM.gif";
 			const prefix = await threadsData.get(event.threadID, "data.prefix") || global.GoatBot.config.prefix;
 			const musicPrefix = await threadsData.get(event.threadID, "data.musicPrefix") || "$";
 			const songLink = await threadsData.get(event.threadID, "data.songLink") || "Not set";
 			
-			const prefixInfo = `» MY PREFIX IS [${prefix}]
+			const prefixInfo = `Hey Dear Am Abhi's Bot 🐥💜My Prefix Is [${prefix}]
 » PROXIMA [V¹]`;
 			return message.reply({
 				body: prefixInfo,
