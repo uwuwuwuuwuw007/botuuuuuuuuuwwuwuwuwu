@@ -1,11 +1,11 @@
-let lastReplyIndexSoyek = null;
-let lastReplyIndexsoyek = null;
+let lastReplyIndexAbhi = null;
+let lastReplyIndexabhi = null;
 
 module.exports = {
   config: {
-    name: "callSoyek",
+    name: "callAbhi",
     version: "1.0",
-    author: "Soyek Daii",
+    author: "Abhi",
     countDown: 5,
     role: 0,
     shortDescription: "no prefix",
@@ -31,18 +31,18 @@ module.exports = {
         return { reply: replies[newIndex], index: newIndex };
       };
 
-      // Replies for "Soyek"
-      if (event.body && event.body.toLowerCase().includes("soyek")) {
-        const repliesForSoyek = [
-          `${name}, Yo Mero Daii Ho 🤷🏼‍♂️🙄`,
+      // Replies for "Abhi"
+      if (event.body && event.body.toLowerCase().includes("abhi")) {
+        const repliesForAbhi = [
+          `${name}, Mere Sir Ko Kyu Bula Raha 😺`,
           `Hello, ${name}! Mero Dai Sanga Kei Vannu parne thiyo ki? Malai Van. 🌟`,
           `${name}, Mero Dai Bg Xa Ekxin la😗⏳`,
           `${name}, Katti dai lai matra khojxau maiiya hami sojo ko chai man haina ra🤭!?`,
           `${name}! Mero Daii Ko Nam Nali Ta Tero Mukh Bata!😒`,
         ];
 
-        const { reply, index } = getRandomReply(repliesForSoyek, lastReplyIndexSoyek);
-        lastReplyIndexSoyek = index;
+        const { reply, index } = getRandomReply(repliesForabhi, lastReplyIndexAbhi);
+        lastReplyIndexAbhi = index;
 
         api.setMessageReaction("💬", event.messageID, () => {}, true);
 
@@ -52,16 +52,16 @@ module.exports = {
         });
       }
 
-      // Replies for "soyek"
-      if (event.body && event.body.toLowerCase().includes("soyek")) {
-        const repliesForSoyek = [
+      // Replies for "Abhi"
+      if (event.body && event.body.toLowerCase().includes("abhi")) {
+        const repliesForabhi = [
           `${name}! Mero Dai Bg Xa Ekxin Uncle hoki Aunty ho🙄`,
           `${name}, Ekxin hau katti hatar vako kei thiyo vane malai van?`,
-          `${name}! Soyek Dai ko vai ho malai vanda pani kei hunna hau!`,
+          `${name}! Abhi Dai ko vai ho malai vanda pani kei hunna hau!`,
         ];
 
-        const { reply, index } = getRandomReply(repliesForSoyek, lastReplyIndexSoyek);
-        lastReplyIndexSoyek = index;
+        const { reply, index } = getRandomReply(repliesForAbhi, lastReplyIndexAbhi);
+        lastReplyIndexAbhi = index;
 
         api.setMessageReaction("💬", event.messageID, () => {}, true);
 
