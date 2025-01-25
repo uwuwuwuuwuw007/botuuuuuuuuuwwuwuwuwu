@@ -16,7 +16,7 @@ module.exports = {
 
       // If the bot is added to the group
       if (dataAddedParticipants.some((item) => item.userFbId === api.getCurrentUserID())) {
-        const newNickname = "Ichirou🤍🕊️";
+        const newNickname = "Abhii's Bot 🐥💜";
         await api.changeNickname(newNickname, threadID, api.getCurrentUserID());
 
         const videoUrl = 'https://drive.google.com/uc?export=download&id=128FuMdA9iOpRtsKTVTFHNF6w3FqJHOaJ';
@@ -37,7 +37,7 @@ module.exports = {
           writer.on('finish', async () => {
             try {
               await message.send({
-                body: "Hi, I Am Ichirou🤍🕊️. Developed by Miss Aayusha Shrestha and Mr Soyek!🍁🤍",
+                body: "Hi, I Am Abhi's Bot 🐥💜. Developed by Mr Abhi!🍁🤍",
                 attachment: fs.createReadStream(videoPath),
               });
             } catch (error) {
